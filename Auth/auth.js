@@ -84,11 +84,12 @@ const validateEmail = async (Email)=>{
 }
 const verify=(req,res,next)=>{
     let token = req.header('authorization')
+    // console.log(token)
     if (!token) {
         res.json("Access Denied");
     } else {
-        let verified = jwt.verify(token,"secretkey");
-        if (verified.User_id) {
+        let verified = jwt.verify(token,"touseef");
+        if (verified) {
             next()
         } else {
             res.json("Invalid Token")
